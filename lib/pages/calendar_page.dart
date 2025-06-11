@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/dragmodal.dart';
-import 'package:flutter_application_3/models/calendar_model.dart';
-import 'package:flutter_application_3/widgets/calendar_schedule_widget.dart';
+import 'package:machung_mobile/dragmodal.dart';
+import 'package:machung_mobile/models/calendar_model.dart';
+import 'package:machung_mobile/widgets/calendar_schedule_widget.dart';
 
 class CalendarPage extends StatefulWidget {
   CalendarPage({Key? key}) : super(key: key);

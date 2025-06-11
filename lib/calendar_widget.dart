@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/eventstyle.dart';
+import 'package:machung_mobile/eventstyle.dart';
 
 class CalendarScheduleWidget extends StatelessWidget {
   final CalendarView view;
@@ -22,7 +22,10 @@ class CalendarScheduleWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("📅 Tampilan Kalender (${view.name})", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        Text(
+          "📅 Tampilan Kalender (${view.name})",
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
         const SizedBox(height: 10),
         // Simulasi kalender (dummy view)
         Container(
@@ -32,30 +35,55 @@ class CalendarScheduleWidget extends StatelessWidget {
         ),
         const SizedBox(height: 20),
 
-        Text("📌 Event yang Ditambahkan", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-        ...listOfEvent.map((event) => Card(
-              color: (event['style'] as EventStyle).color,
-              child: ListTile(
-                title: Text(event['nama_event'], style: TextStyle(color: (event['style'] as EventStyle).textColor)),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Tanggal: ${event['_date']} - Jam: ${event['_time']}", style: TextStyle(color: (event['style'] as EventStyle).textColor)),
-                    Text("Lokasi: ${event['location']}", style: TextStyle(color: (event['style'] as EventStyle).textColor)),
-                    event['deskripsi_event'], // Ini harus widget
-                  ],
+        Text(
+          "📌 Event yang Ditambahkan",
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        ...listOfEvent.map(
+          (event) => Card(
+            color: (event['style'] as EventStyle).color,
+            child: ListTile(
+              title: Text(
+                event['nama_event'],
+                style: TextStyle(
+                  color: (event['style'] as EventStyle).textColor,
                 ),
               ),
-            )),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Tanggal: ${event['_date']} - Jam: ${event['_time']}",
+                    style: TextStyle(
+                      color: (event['style'] as EventStyle).textColor,
+                    ),
+                  ),
+                  Text(
+                    "Lokasi: ${event['location']}",
+                    style: TextStyle(
+                      color: (event['style'] as EventStyle).textColor,
+                    ),
+                  ),
+                  event['deskripsi_event'], // Ini harus widget
+                ],
+              ),
+            ),
+          ),
+        ),
 
         const SizedBox(height: 20),
 
-        Text("🇮🇩 Hari Libur Nasional", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-        ...listOfHoliday.map((holiday) => ListTile(
-              leading: Icon(Icons.flag, color: Colors.red),
-              title: Text(holiday['nama_libur']),
-              subtitle: Text("Tanggal: ${holiday['tanggal']}"),
-            )),
+        Text(
+          "🇮🇩 Hari Libur Nasional",
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        ...listOfHoliday.map(
+          (holiday) => ListTile(
+            leading: Icon(Icons.flag, color: Colors.red),
+            title: Text(holiday['nama_libur']),
+            subtitle: Text("Tanggal: ${holiday['tanggal']}"),
+          ),
+        ),
       ],
     );
   }
